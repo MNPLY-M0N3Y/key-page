@@ -1,0 +1,32 @@
+---
+// src/components/KeyBrowserHeader.astro
+---
+<header class="sticky top-0 z-20 bg-gray-900 border-b border-gray-800 p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+  <div class="flex items-center space-x-2">
+      <!-- KeyBrowserHeader.astro -->
+      <div class="flex gap-2 items-center">
+        <label class="flex items-center gap-1 text-sm">
+          <input type="radio" name="mode" value="seed" checked id="modeSeed">
+          12-word seed
+        </label>
+        <label class="flex items-center gap-1 text-sm">
+          <input type="radio" name="mode" value="priv" id="modePriv">
+          Base58 private key
+        </label>
+      </div>
+
+    <button id="searchBtn" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-md">
+      Search
+    </button>
+  </div>
+  <div id="metricsPanel" class="flex space-x-6 font-mono text-sm">
+    <div>Pos: <span id="currentPosition">0</span></div>
+    <div>Rate: <span id="generationRate">0/s</span></div>
+    <div>Shown: <span id="renderedCount">0</span></div>
+  </div>
+</header>
+
+<style>
+  /* Ensure header text remains light in dark theme */
+  header { color: inherit; }
+</style>

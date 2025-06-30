@@ -1,0 +1,46 @@
+[package]
+name = "solana-key-wasm"
+version = "0.1.0"
+authors = ["Dax911"]
+license = "ISC"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# WASM bindings
+wasm-bindgen = "0.2.95"
+
+# Crypto dependencies that work with WASM
+bip39 = "2.2.0"
+bs58 = "0.5.1"
+hex = "0.4.3"
+sha2 = "0.10"
+getrandom = { version = "0.2", features = ["js"] }
+
+# Use ed25519-dalek directly instead of solana-sdk
+ed25519-dalek = { version = "2.1.1", features = ["rand_core", "zeroize"] }
+
+# Alternative for BIP32 derivation
+ed25519-bip32 = "0.4"
+
+# WASM utilities
+console_error_panic_hook = "0.1.7"
+
+# Web APIs
+[dependencies.web-sys]
+version = "0.3.72"
+features = ["console", "Performance", "Window"]
+
+[dependencies.js-sys]
+version = "0.3.72"
+
+# Add wee_alloc as a feature
+[features]
+default = []
+wee_alloc = ["dep:wee_alloc"]
+
+[dependencies.wee_alloc]
+version = "0.4.5"
+optional = true

@@ -1,0 +1,11 @@
+---
+// src/pages/explainer.astro
+import Layout from '../layouts/Layout.astro';
+import DerivationPathExplainer from '../components/DerivationPathExplainer.tsx';
+---
+
+<Layout title="How Cryptocurrency Key Derivation Works">
+  <main class="min-h-screen bg-gray-900 text-gray-100">
+    <DerivationPathExplainer client:load />
+  </main>
+</Layout>

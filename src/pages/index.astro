@@ -1,0 +1,12 @@
+---
+// src/pages/index.astro
+import Layout from '../layouts/Layout.astro';
+import InfiniteKeyBrowser from '../components/InfiniteKeyBrowser.tsx';
+---
+
+<Layout title="Solana Key Browser">
+  <main class="h-screen bg-gray-900 text-gray-100 overflow-hidden">
+    <!-- The InfiniteKeyBrowser handles its own header and scrolling -->
+    <InfiniteKeyBrowser client:load />
+  </main>
+</Layout>
