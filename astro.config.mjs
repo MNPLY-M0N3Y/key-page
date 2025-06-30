@@ -25,5 +25,32 @@ export default defineConfig({
     define: {
       global: "globalThis",
     },
+
+    plugins: [
+      {
+        name: "fix-wasm-mime",
+        enforce: "post",
+        configureServer(server) {
+          server.middlewares.use((req, res, next) => {
+            if (req.url?.endsWith(".wasm")) {
+              res.setHeader("Content-Type", "application/wasm");
+              res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+              res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+            }
+            next();
+          });
+        },
+        configurePreviewServer(server) {
+          server.middlewares.use((req, res, next) => {
+            if (req.url?.endsWith(".wasm")) {
+              res.setHeader("Content-Type", "application/wasm");
+              res.setHeader("Cross-Origin-Embedder-Policy", "require-corp");
+              res.setHeader("Cross-Origin-Opener-Policy", "same-origin");
+            }
+            next();
+          });
+        },
+      },
+    ],
   },
 });
